@@ -1,0 +1,30 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
+  },
+  "keywords": [
+    "stock-times",
+    "backend"
+  ],
+  "author": "Niteshkumar S & Ashfaaq IIM",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.11.17",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "5.0.1",
+    "swagger-ui-express": "^4.1.6",
+    "uuid-apikey": "^1.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
