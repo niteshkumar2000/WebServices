@@ -22,12 +22,12 @@ const typeDefs = gql`
   }
 
   type Query {
-    getList: [String!]!
-    getStockData(stock: String!): [Stock!]!
+    getList: [String]
+    getStockData(stock: String!): [Stock]
   }
 
   type Mutation {
-    insertStockData(input: [StockInput!]!): String!
+    insertStockData(input: [StockInput!]!): String
   }
 `;
 

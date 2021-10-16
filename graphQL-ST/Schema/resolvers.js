@@ -3,20 +3,24 @@ const { GraphQLDateTime } = require("graphql-iso-date");
 
 const resolvers = {
   Query: {
-    async getList() {
-      return await stocks.distinct("stock");
+    async getList(root, args, context) {
+      if (context.userRole === "admin" || context.userRole === "client")
+        return await stocks.distinct("stock");
     },
-    async getStockData(parent, args) {
-      return await stocks.find({ stock: args.stock }).sort({ date: 1 });
+    async getStockData(root, args, context) {
+      if (context.userRole === "admin" || context.userRole === "client")
+        return await stocks.find({ stock: args.stock }).sort({ date: 1 });
     },
   },
   Mutation: {
-    async insertStockData(parent, args) {
-      const res = await stocks.insertMany(args.input);
-      if (res) {
-        return "success";
-      } else {
-        return "fail";
+    async insertStockData(root, args, context) {
+      if (context.userRole === "admin") {
+        const res = await stocks.insertMany(args.input);
+        if (res) {
+          return "success";
+        } else {
+          return "fail";
+        }
       }
     },
   },
