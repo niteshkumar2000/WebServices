@@ -47,7 +47,7 @@ const typeDefs = gql`
   type Query {
     getList: [String]
     getStockData(stock: String!): [Stock]
-    getUser(id: String!): User
+    getUser: User
   }
 
   type Mutation {
