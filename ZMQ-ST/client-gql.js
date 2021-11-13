@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-async function getData() {
+export async function getData() {
   const symbol = "SBIN";
   const data = JSON.stringify({
     query: `
@@ -47,5 +47,3 @@ async function getData() {
   const json = await response.json();
   console.log(json.data);
 }
-
-getData();

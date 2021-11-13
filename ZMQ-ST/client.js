@@ -1,5 +1,5 @@
-var zmq = require("zeromq"),
-  sock = zmq.socket("push");
+import zmq from "zeromq";
+const sock = zmq.socket("push");
 
 sock.connect("tcp://127.0.0.1:3000");
 console.log("Producer connected to port 3000");

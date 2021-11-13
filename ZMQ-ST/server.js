@@ -1,5 +1,8 @@
-var zmq = require("zeromq"),
-  sock = zmq.socket("pull");
+import zmq from "zeromq";
+import { getData } from "./client-gql.js";
+
+getData();
+const sock = zmq.socket("pull");
 
 sock.bindSync("tcp://127.0.0.1:3000");
 console.log("Server bound to port 3000");

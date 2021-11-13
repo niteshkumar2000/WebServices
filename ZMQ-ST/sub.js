@@ -1,5 +1,5 @@
-var zmq = require("zeromq"),
-  sock = zmq.socket("sub");
+import zmq from "zeromq";
+const sock = zmq.socket("sub");
 
 sock.connect("tcp://127.0.0.1:3000");
 sock.subscribe("IPO");

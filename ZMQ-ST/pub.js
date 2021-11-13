@@ -1,6 +1,5 @@
-// pubber.js
-var zmq = require("zeromq"),
-  sock = zmq.socket("pub");
+import zmq from "zeromq";
+const sock = zmq.socket("pub");
 
 sock.bindSync("tcp://127.0.0.1:3000");
 console.log("Publisher bound to port 3000");
