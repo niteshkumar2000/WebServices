@@ -25,6 +25,13 @@ const typeDefs = gql`
     portfolio: [Portfolio]
   }
 
+  type News {
+    company: String!
+    date: ISODate!
+    price: Int!
+    quantity: Int!
+  }
+
   input StockInput {
     stock: String!
     open: Float!
@@ -48,6 +55,7 @@ const typeDefs = gql`
     getList: [String]
     getStockData(stock: String!): [Stock]
     getUser: User
+    getNews: [News]
   }
 
   type Mutation {

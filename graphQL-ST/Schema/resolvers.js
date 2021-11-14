@@ -1,5 +1,6 @@
 const stocks = require("../models/stocks");
 const user = require("../models/user");
+const news = require("../models/news");
 const { GraphQLDateTime } = require("graphql-iso-date");
 
 const resolvers = {
@@ -13,6 +14,9 @@ const resolvers = {
     },
     async getUser(root, args, context) {
       if (context.id) return await user.findById(context.id);
+    },
+    async getNews(root, args, context) {
+      if (context.id) return await news.find({});
     },
   },
   Mutation: {
