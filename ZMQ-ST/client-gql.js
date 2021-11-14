@@ -21,16 +21,29 @@ export async function getData() {
     },
   });
 
-  const data1 = JSON.stringify({
+  const response = await fetch("http://localhost:5000", {
+    method: "post",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Length": data.length,
+      Authorization: "W01SAW9-MH64XRE-GG8M01J-HBKZ6F1",
+      "User-Agent": "Node",
+    },
+  });
+  const json = await response.json();
+  console.log(json.data);
+}
+
+export async function buyStock(order) {
+  const data = JSON.stringify({
     query: `
-      mutation Mutation($input: Float!, $buyOrder: PortfolioInput!) {
-        addBalance(input: $input)
+      mutation Mutation($buyOrder: PortfolioInput!) {
         buyStock(input: $buyOrder)
       }
     `,
     variables: {
-      input: 100,
-      buyOrder: { stockName: "SBIN", sharesCount: 1 },
+      buyOrder: order,
     },
   });
 
@@ -45,5 +58,31 @@ export async function getData() {
     },
   });
   const json = await response.json();
-  console.log(json.data);
+  return json;
+}
+
+export async function sellStock(order) {
+  const data = JSON.stringify({
+    query: `
+      mutation Mutation($sellOrder: PortfolioInput!) {
+        sellStock(input: $sellOrder)
+      }
+    `,
+    variables: {
+      sellOrder: order,
+    },
+  });
+
+  const response = await fetch("http://localhost:5000", {
+    method: "post",
+    body: data,
+    headers: {
+      "Content-Type": "application/json",
+      "Content-Length": data.length,
+      Authorization: "W01SAW9-MH64XRE-GG8M01J-HBKZ6F1",
+      "User-Agent": "Node",
+    },
+  });
+  const json = await response.json();
+  return json;
 }
